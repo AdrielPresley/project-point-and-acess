@@ -19,38 +19,37 @@ public class JornadaTrabalhoController {
     }
 
     @PostMapping
-    public JornadaTrabalho createJornada(@RequestBody JornadaTrabalho jornadaTrabalho){
+    public JornadaTrabalho createJornada(@RequestBody JornadaTrabalho jornadaTrabalho) {
         return jornadaService.saveJornada(jornadaTrabalho);
     }
 
     @GetMapping
-    public List<JornadaTrabalho> getJornadaList(){
+    public List<JornadaTrabalho> getJornadaList() {
         return jornadaService.findAll();
 
     }
 
     @GetMapping("/{idJornada}")
-    public ResponseEntity<JornadaTrabalho>  getJornadaByID(@PathVariable("idJornada") Long idJornada) {
-        return  ResponseEntity.ok(jornadaService.getById(idJornada).orElseThrow(() -> new NoSuchElementException("Not found!")));
+    public ResponseEntity<JornadaTrabalho> getJornadaByID(@PathVariable("idJornada") Long idJornada) {
+        return ResponseEntity.ok(jornadaService.getById(idJornada).orElseThrow(() -> new NoSuchElementException("Not found!")));
 
     }
 
     @PutMapping
-    public JornadaTrabalho updateJornada(@RequestBody JornadaTrabalho jornadaTrabalho){
+    public JornadaTrabalho updateJornada(@RequestBody JornadaTrabalho jornadaTrabalho) {
         return jornadaService.updateJornada(jornadaTrabalho);
     }
 
     @DeleteMapping("/{idJornada}")
     public ResponseEntity<JornadaTrabalho> deleteByID(@PathVariable("idJornada") Long idJornada) {
-       try {
-           jornadaService.deleteJornada(idJornada);
-       }catch (Exception e){
-           System.out.println(e.getMessage());
-       }
+        try {
+            jornadaService.deleteJornada(idJornada);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return null;
 
     }
-
 
 
 }

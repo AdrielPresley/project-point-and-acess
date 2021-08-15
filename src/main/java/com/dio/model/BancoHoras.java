@@ -24,13 +24,14 @@ public class BancoHoras {
     @Embeddable
     @Getter
     @Setter
-    public static class BancoHorasId implements Serializable{
+    public static class BancoHorasId implements Serializable {
         private long idBancoHoras;
         private long idMovimentacao;
         private long idUsuario;
 
 
     }
+
     @EmbeddedId
     private BancoHorasId bancoHorasId;
     private LocalDateTime dataTrabalhada;

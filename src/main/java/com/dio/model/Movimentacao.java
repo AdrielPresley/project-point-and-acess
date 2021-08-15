@@ -17,37 +17,38 @@ import java.util.Objects;
 @Entity
 public class Movimentacao {
 
-        @AllArgsConstructor
-        @NoArgsConstructor
-        @EqualsAndHashCode
-        @Embeddable
-        public static class  MovimentacaoId implements Serializable{
-            private long idMovimento;
-            private long idUsuario;
-        }
-        @Id
-        @EmbeddedId
-        private MovimentacaoId movimentacaoId;
-        private LocalDateTime dataEntrada;
-        private LocalDateTime dataSaida;
-        private BigDecimal periodo;
-        @ManyToOne
-        private Ocorrencia ocorrencia;
-        @ManyToOne
-        private Calendario calendario;
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @EqualsAndHashCode
+    @Embeddable
+    public static class MovimentacaoId implements Serializable {
+        private long idMovimento;
+        private long idUsuario;
+    }
 
-        @Override
-        public boolean equals(Object o) {
-                if (this == o) return true;
-                if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-                Movimentacao that = (Movimentacao) o;
+    @Id
+    @EmbeddedId
+    private MovimentacaoId movimentacaoId;
+    private LocalDateTime dataEntrada;
+    private LocalDateTime dataSaida;
+    private BigDecimal periodo;
+    @ManyToOne
+    private Ocorrencia ocorrencia;
+    @ManyToOne
+    private Calendario calendario;
 
-                if (!Objects.equals(movimentacaoId, that.movimentacaoId)) return false;
-                return Objects.equals(movimentacaoId, that.movimentacaoId);
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Movimentacao that = (Movimentacao) o;
 
-        @Override
-        public int hashCode() {
-                return Objects.hashCode(movimentacaoId);
-        }
+        if (!Objects.equals(movimentacaoId, that.movimentacaoId)) return false;
+        return Objects.equals(movimentacaoId, that.movimentacaoId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(movimentacaoId);
+    }
 }

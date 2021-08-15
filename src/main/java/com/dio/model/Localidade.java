@@ -16,7 +16,7 @@ import java.util.Objects;
 @Entity
 public class Localidade {
     @Id
-    private  long id;
+    private long id;
     @ManyToOne
     private NivelAcesso nivelAcesso;
     private String descricao;
